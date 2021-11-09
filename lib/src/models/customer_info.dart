@@ -3,10 +3,10 @@ import 'dart:convert';
 /// zesa customer information model, property of [ZesaCustomerDetail] -> customerInfo
 /// used to get customer information from their zesa meter number
 class CustomerInfo {
-  final String customerName;
-  final String reference;
-  final String address;
-  final String meterNumber;
+  final String? customerName;
+  final String? reference;
+  final String? address;
+  final String? meterNumber;
 
   CustomerInfo({
     this.reference,
@@ -24,8 +24,9 @@ class CustomerInfo {
     };
   }
 
-  factory CustomerInfo.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
+  factory CustomerInfo.fromMap(Map<String, dynamic>? map) {
+    // ignore: null_check_always_fails
+    if (map == null) return null!;
 
     return CustomerInfo(
       customerName: map['CustomerName'],

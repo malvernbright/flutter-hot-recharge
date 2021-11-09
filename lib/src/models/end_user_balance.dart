@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class EndUserBalance {
-  final int replyCode;
-  final String replyMsg;
-  final double mobileBalance;
-  final String windowPeriod;
-  final String agentReference;
+  final int? replyCode;
+  final String? replyMsg;
+  final double? mobileBalance;
+  final String? windowPeriod;
+  final String? agentReference;
   EndUserBalance({
     this.replyCode,
     this.replyMsg,

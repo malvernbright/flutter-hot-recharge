@@ -4,17 +4,17 @@ import 'zesa_token.dart';
 
 /// response model on successful zesa recharge
 class ZesaRecharge {
-  final int replyCode;
-  final String replyMsg;
-  final double walletBalance;
-  final double amount;
-  final double discount;
-  final String meter;
-  final String accountName;
-  final String address;
-  final List<ZesaTokenItem> tokens;
-  final String agentReference;
-  final int rechargeID;
+  final int? replyCode;
+  final String? replyMsg;
+  final double? walletBalance;
+  final double? amount;
+  final double? discount;
+  final String? meter;
+  final String? accountName;
+  final String? address;
+  final List<ZesaTokenItem>? tokens;
+  final String? agentReference;
+  final int? rechargeID;
 
   ZesaRecharge({
     this.replyCode,
@@ -31,17 +31,17 @@ class ZesaRecharge {
   });
 
   ZesaRecharge copyWith({
-    int replyCode,
-    String replyMsg,
-    double walletBalance,
-    double amount,
-    double discount,
-    String meter,
-    String accountName,
-    String address,
-    List<ZesaTokenItem> tokens,
-    String agentReference,
-    int rechargeID,
+    int? replyCode,
+    String? replyMsg,
+    double? walletBalance,
+    double? amount,
+    double? discount,
+    String? meter,
+    String? accountName,
+    String? address,
+    List<ZesaTokenItem>? tokens,
+    String? agentReference,
+    int? rechargeID,
   }) {
     return ZesaRecharge(
       replyCode: replyCode ?? this.replyCode,
@@ -68,7 +68,7 @@ class ZesaRecharge {
       'Meter': meter,
       'AccountName': accountName,
       'Address': address,
-      'Tokens': tokens?.map((x) => x.toMap())?.toList(),
+      'Tokens': tokens?.map((x) => x.toMap()).toList(),
       'AgentReference': agentReference,
       'RechargeID': rechargeID,
     };

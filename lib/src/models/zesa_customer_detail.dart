@@ -5,11 +5,11 @@ import 'customer_info.dart';
 
 /// get zesa customer details from their meter-number
 class ZesaCustomerDetail {
-  final int replyCode;
-  final String replyMsg;
-  final String meter;
-  final String agentReference;
-  final CustomerInfo customerInfo;
+  final int? replyCode;
+  final String? replyMsg;
+  final String? meter;
+  final String? agentReference;
+  final CustomerInfo? customerInfo;
 
   ZesaCustomerDetail({
     this.replyCode,
@@ -20,16 +20,16 @@ class ZesaCustomerDetail {
   });
 
   ZesaCustomerDetail copyWith({
-    int replyCode,
-    String replyMsg,
-    int meter,
-    String agentReference,
-    CustomerInfo customerInfo,
+    int? replyCode,
+    String? replyMsg,
+    int? meter,
+    String? agentReference,
+    CustomerInfo? customerInfo,
   }) {
     return ZesaCustomerDetail(
       replyCode: replyCode ?? this.replyCode,
       replyMsg: replyMsg ?? this.replyMsg,
-      meter: meter ?? this.meter,
+      meter: meter as String? ?? this.meter,
       agentReference: agentReference ?? this.agentReference,
       customerInfo: customerInfo ?? this.customerInfo,
     );
@@ -45,8 +45,9 @@ class ZesaCustomerDetail {
     };
   }
 
-  factory ZesaCustomerDetail.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
+  factory ZesaCustomerDetail.fromMap(Map<String, dynamic>? map) {
+    // ignore: null_check_always_fails
+    if (map == null) return null!;
 
     return ZesaCustomerDetail(
       replyCode: map['ReplyCode'],

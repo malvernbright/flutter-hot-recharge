@@ -5,18 +5,18 @@ import 'package:hot_recharge/hot_recharge.dart';
 /// query zesa transaction success response model
 /// it return same original response [ZesaRecharge] with additional information of [CustomerInfo]
 class QueryZesaTransaction {
-  final int replyCode;
-  final String replyMsg;
-  final double walletBalance;
-  final double amount;
-  final double discount;
-  final String meter;
-  final String accountName;
-  final String address;
-  final List<ZesaTokenItem> tokens;
-  final String agentReference;
-  final int rechargeID;
-  final CustomerInfo customerInfo;
+  final int? replyCode;
+  final String? replyMsg;
+  final double? walletBalance;
+  final double? amount;
+  final double? discount;
+  final String? meter;
+  final String? accountName;
+  final String? address;
+  final List<ZesaTokenItem>? tokens;
+  final String? agentReference;
+  final int? rechargeID;
+  final CustomerInfo? customerInfo;
 
   QueryZesaTransaction({
     this.replyCode,
@@ -34,18 +34,18 @@ class QueryZesaTransaction {
   });
 
   QueryZesaTransaction copyWith({
-    int replyCode,
-    String replyMsg,
-    double walletBalance,
-    double amount,
-    double discount,
-    String meter,
-    String accountName,
-    String address,
-    List<ZesaTokenItem> tokens,
-    String agentReference,
-    int rechargeID,
-    ZesaCustomerDetail customerInfo,
+    int? replyCode,
+    String? replyMsg,
+    double? walletBalance,
+    double? amount,
+    double? discount,
+    String? meter,
+    String? accountName,
+    String? address,
+    List<ZesaTokenItem>? tokens,
+    String? agentReference,
+    int? rechargeID,
+    ZesaCustomerDetail? customerInfo,
   }) {
     return QueryZesaTransaction(
       replyCode: replyCode ?? this.replyCode,
@@ -59,7 +59,7 @@ class QueryZesaTransaction {
       tokens: tokens ?? this.tokens,
       agentReference: agentReference ?? this.agentReference,
       rechargeID: rechargeID ?? this.rechargeID,
-      customerInfo: customerInfo ?? this.customerInfo,
+      customerInfo: customerInfo as CustomerInfo? ?? this.customerInfo,
     );
   }
 
@@ -73,10 +73,10 @@ class QueryZesaTransaction {
       'Meter': meter,
       'AccountName': accountName,
       'Address': address,
-      'Tokens': tokens?.map((x) => x.toMap())?.toList(),
+      'Tokens': tokens?.map((x) => x.toMap()).toList(),
       'AgentReference': agentReference,
       'RechargeID': rechargeID,
-      'CustomerInfo': customerInfo.toMap(),
+      'CustomerInfo': customerInfo!.toMap(),
     };
   }
 

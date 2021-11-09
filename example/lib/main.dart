@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -31,9 +31,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController amountController;
-  TextEditingController phoneController;
-  HotRecharge hotRecharge;
+  TextEditingController? amountController;
+  TextEditingController? phoneController;
+  late HotRecharge hotRecharge;
 
   bool loading = false;
 
@@ -51,8 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    amountController.dispose();
-    phoneController.dispose();
+    amountController!.dispose();
+    phoneController!.dispose();
     super.dispose();
   }
 
@@ -67,9 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void setupHR() {
     hotRecharge = HotRecharge(
-      accessCode: '<your-acc-email>',
-      accessPswd: '<your-acc-pswd>',
-      //enableLogger: true, // enable detailed request logger on console. Use while TESTING only
+      accessCode: 'malvern@malvernbright.co.zw',
+      accessPswd: 'Lockthemout9',
+      enableLogger:
+          true, // enable detailed request logger on console. Use while TESTING only
     );
   }
 
@@ -79,25 +80,26 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     var response = await hotRecharge.topupNumber(
-      double.parse(amountController.text),
-      phoneController.text,
+      double.parse(amountController!.text),
+      phoneController!.text,
       customMessage: mesg,
     );
 
     if (response.rechargeResponse == RechargeResponse.SUCCESS) {
       final PinlessRecharge result = response.apiResponse;
-      showSnackbar(result.replyMsg, Colors.green);
+      showSnackbar(result.replyMsg!, Colors.green);
     }
 
     // there was a problem
     else {
       showSnackbar('failed to sent airtime: ${response.message}', Colors.red);
+      print(response.rechargeResponse);
     }
 
     setState(() {
       loading = false;
-      phoneController.clear();
-      amountController.clear();
+      phoneController!.clear();
+      amountController!.clear();
     });
   }
 
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(15),

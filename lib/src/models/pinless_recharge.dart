@@ -2,17 +2,17 @@ import 'dart:convert';
 
 /// response model for a successful pinless recharge (airtime topup to user number)
 class PinlessRecharge {
-  final String agentReference;
-  final double amount;
-  final double data;
-  final double discount;
-  final double finalBalance;
-  final double initialBalance;
-  final int rechargeID;
-  final int replyCode;
-  final String replyMsg;
-  final int sms;
-  final double walletBalance;
+  final String? agentReference;
+  final double? amount;
+  final double? data;
+  final double? discount;
+  final double? finalBalance;
+  final double? initialBalance;
+  final int? rechargeID;
+  final int? replyCode;
+  final String? replyMsg;
+  final int? sms;
+  final double? walletBalance;
   final dynamic window;
 
   PinlessRecharge({
@@ -31,17 +31,17 @@ class PinlessRecharge {
   });
 
   PinlessRecharge copyWith({
-    String agentReference,
-    double amount,
-    double data,
-    double discount,
-    double finalBalance,
-    double initialBalance,
-    int rechargeID,
-    int replyCode,
-    String replyMsg,
-    int sms,
-    double walletBalance,
+    String? agentReference,
+    double? amount,
+    double? data,
+    double? discount,
+    double? finalBalance,
+    double? initialBalance,
+    int? rechargeID,
+    int? replyCode,
+    String? replyMsg,
+    int? sms,
+    double? walletBalance,
     dynamic window,
   }) {
     return PinlessRecharge(
@@ -77,8 +77,9 @@ class PinlessRecharge {
     };
   }
 
-  factory PinlessRecharge.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
+  factory PinlessRecharge.fromMap(Map<String, dynamic>? map) {
+    // ignore: null_check_always_fails
+    if (map == null) return null!;
 
     return PinlessRecharge(
       agentReference: map['AgentReference'],

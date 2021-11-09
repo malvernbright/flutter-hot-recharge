@@ -2,13 +2,13 @@ import 'dart:convert';
 
 /// zesa token item model, a property in [ZesaRecharge] -> tokens
 class ZesaTokenItem {
-  final String token;
-  final double units;
-  final double netAmount;
-  final double levy;
-  final double arrears;
-  final double taxAmount;
-  final String zesaReference;
+  final String? token;
+  final double? units;
+  final double? netAmount;
+  final double? levy;
+  final double? arrears;
+  final double? taxAmount;
+  final String? zesaReference;
 
   ZesaTokenItem({
     this.token,
@@ -21,21 +21,21 @@ class ZesaTokenItem {
   });
 
   ZesaTokenItem copyWith({
-    String token,
-    String units,
-    String netAmount,
-    String levy,
-    String arrears,
-    String taxAmount,
-    String zesaReference,
+    String? token,
+    String? units,
+    String? netAmount,
+    String? levy,
+    String? arrears,
+    String? taxAmount,
+    String? zesaReference,
   }) {
     return ZesaTokenItem(
       token: token ?? this.token,
-      units: units ?? this.units,
-      netAmount: netAmount ?? this.netAmount,
-      levy: levy ?? this.levy,
-      arrears: arrears ?? this.arrears,
-      taxAmount: taxAmount ?? this.taxAmount,
+      units: units as double? ?? this.units,
+      netAmount: netAmount as double? ?? this.netAmount,
+      levy: levy as double? ?? this.levy,
+      arrears: arrears as double? ?? this.arrears,
+      taxAmount: taxAmount as double? ?? this.taxAmount,
       zesaReference: zesaReference ?? this.zesaReference,
     );
   }
@@ -52,8 +52,9 @@ class ZesaTokenItem {
     };
   }
 
-  factory ZesaTokenItem.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
+  factory ZesaTokenItem.fromMap(Map<String, dynamic>? map) {
+    // ignore: null_check_always_fails
+    if (map == null) return null!;
 
     return ZesaTokenItem(
       token: map['Token'],
